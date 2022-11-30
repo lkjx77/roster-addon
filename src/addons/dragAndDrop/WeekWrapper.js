@@ -6,7 +6,7 @@ import { findDOMNode } from 'react-dom'
 
 import { eventSegments } from '../../utils/eventLevels'
 import Selection, { getBoundsForNode } from '../../Selection'
-// import EventRow from '../../EventRow'
+import EventRow from '../../EventRow'
 import { dragAccessors } from './common'
 
 const propTypes = {}
@@ -252,11 +252,7 @@ class WeekWrapper extends React.PureComponent {
     })
     selector.on('click', () => this.context.draggable.onEnd(null))
     // onReset end +++
-    // selector.on('reset', () => this.context.draggable.onEnd(null))
-    selector.on('reset', () => {
-      this.reset()
-      this.context.draggable.onEnd(null)
-    })
+    selector.on('reset', () => this.context.draggable.onEnd(null))
   }
 
   handleInteractionEnd = () => {
@@ -280,10 +276,9 @@ class WeekWrapper extends React.PureComponent {
   }
 
   render() {
-    // const { children, accessors } = this.props
-    const { children } = this.props
+    const { children, accessors } = this.props
 
-    // let { segment } = this.state
+    let { segment } = this.state
 
     // console.log(`draw segment: ${JSON.stringify(segment)}`)
 
@@ -300,7 +295,7 @@ class WeekWrapper extends React.PureComponent {
           `slotMetrics.last: ${JSON.stringify(this.props.slotMetrics.last)}`
         )}
         {console.log(`addtional segment: ${JSON.stringify(segment)}`)} */}
-        {/* {segment && (
+        {segment && (
           <EventRow
             {...this.props}
             selected={null}
@@ -311,7 +306,7 @@ class WeekWrapper extends React.PureComponent {
               ...dragAccessors,
             }}
           />
-        )} */}
+        )}
 
         <div className="segment end" />
       </div>
